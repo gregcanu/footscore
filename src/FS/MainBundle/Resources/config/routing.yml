@@ -1,3 +1,23 @@
-fs_main_homepage:
+fs_main_home:
     path:     /
-    defaults: { _controller: FSMainBundle:Default:index }
+    defaults: { _controller: FSMainBundle:Foot:index }
+    
+fs_main_matches:
+    path:      /matches/{id}
+    defaults:
+        _controller: FSMainBundle:Foot:matches
+    requirements:
+        id: \d+
+        
+fs_main_standing:
+    path:      /standing/
+    defaults: { _controller: FSMainBundle:Foot:standing }
+    
+fs_main_topplayers:
+    path:      /topplayers/
+    defaults: { _controller: FSMainBundle:Foot:topplayers }
+    
+fs_main_favorites:
+    path:      /favorites/
+    defaults: { _controller: FSMainBundle:Foot:favorites }
+    
