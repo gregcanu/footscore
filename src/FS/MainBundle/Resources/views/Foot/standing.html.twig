@@ -5,5 +5,28 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
-    Classement des équipes de PL à jour
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Equipe</th>
+            <th>Joués</th>
+            <th>G</th>
+            <th>N</th>
+            <th>P</th>
+            <th>Points</th>
+        </tr>
+        {% for teams in standing %}
+            {% for key, team in teams %}
+                <tr>
+                    <td> {{ key+1 }} </td> 
+                    <td> {{ team.name}} </td> 
+                    <td> {{ team.played}} </td> 
+                    <td> {{ team.win}} </td> 
+                    <td> {{ team.draw}} </td> 
+                    <td> {{ team.loss}} </td> 
+                    <td> {{ team.total}} </td> 
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
 {% endblock %}
