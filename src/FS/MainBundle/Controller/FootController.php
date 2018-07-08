@@ -3,6 +3,8 @@
 namespace FS\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FS\MainBundle\Form\SeasonType;
+use Symfony\Component\HttpFoundation\Request;
 
 class FootController extends Controller {
 
@@ -14,15 +16,21 @@ class FootController extends Controller {
         return $this->render('FSMainBundle:Foot:matches.html.twig');
     }
 
-    public function standingAction() {
+    public function standingAction($season, Request $request) {
+        $form = $this->createForm(SeasonType::class, array('season' => $season));
         
-//        $tsdb = $this->get('csa_guzzle.client.tsdb'); 
-        $tsdb = $this->get('app.tsdb'); 
-        $standing = $tsdb->getStanding();
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $data = $form->getData();
+            return $this->redirectToRoute('fs_main_standing', array('season' => $data['season']));
+        }
         
-//        var_dump($standing);die();
+        $tsdb = $this->get('app.tsdb');
+        $standing = $tsdb->getStanding($season);
+
         return $this->render('FSMainBundle:Foot:standing.html.twig', array(
-            'standing' => $standing
+                    'form' => $form->createView(),
+                    'standing' => $standing,
+                    'season' => $season
         ));
     }
 

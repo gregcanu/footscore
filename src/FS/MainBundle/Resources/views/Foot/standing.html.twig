@@ -5,14 +5,25 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
+    {% set years = ( season|split('', 2) ) %}
+    
+    <h1> {{ "Classement saison 20%s - 20%s"|format(years.0, years.1) }} </h1>
+    
+    {{ form_start(form) }}
+    {{ form_widget(form.season) }}
+    {{ form_end(form) }}
+    
     <table class="table">
         <tr>
             <th>#</th>
             <th>Equipe</th>
-            <th>Joués</th>
-            <th>G</th>
-            <th>N</th>
-            <th>P</th>
+            <th>Matchs joués</th>
+            <th>Gagnés</th>
+            <th>Nuls</th>
+            <th>Perdus</th>
+            <th>Buts marqués</th>
+            <th>Buts encaissés</th>
+            <th>Différence</th>
             <th>Points</th>
         </tr>
         {% for teams in standing %}
@@ -24,6 +35,9 @@
                     <td> {{ team.win}} </td> 
                     <td> {{ team.draw}} </td> 
                     <td> {{ team.loss}} </td> 
+                    <td> {{ team.goalsfor}} </td> 
+                    <td> {{ team.goalsagainst}} </td> 
+                    <td> {{ team.goalsdifference}} </td> 
                     <td> {{ team.total}} </td> 
                 </tr>
             {% endfor %}

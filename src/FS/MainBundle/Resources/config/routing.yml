@@ -10,8 +10,10 @@ fs_main_matches:
         id: \d+
         
 fs_main_standing:
-    path:      /standing/
+    path:      /standing/{season}
     defaults: { _controller: FSMainBundle:Foot:standing }
+    requirements:
+        id: \d+
     
 fs_main_topplayers:
     path:      /topplayers/

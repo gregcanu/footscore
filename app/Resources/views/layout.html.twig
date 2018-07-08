@@ -10,47 +10,47 @@
 
         {% block stylesheets %}
             {# Bootstrap #}
-            <link rel="stylesheet" href="{{ asset('bundles/fsmain/css/bootstrap.min.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('bundles/fsmain/css/bootstrap.css') }}" type="text/css" />
             <link rel="stylesheet" href="{{ asset('bundles/fsmain/css/main.css') }}" type="text/css" />
         {% endblock %}
     </head>
 
     <body>
-        
-{#             Navigation #}
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="{{ path('fs_main_home') }}">Foot Score</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{ path('fs_main_standing') }}">Classement</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('fs_main_matches', {id: 1}) }}">Matchs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('fs_main_topplayers') }}">Meilleurs joueurs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('fs_main_favorites') }}">Mes favoris</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-            
-{#        Page Content#}
+
+        {#             Navigation #}
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ path('fs_main_home') }}">Foot Score</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('fs_main_standing', {season: 1718}) }}">Classement</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('fs_main_matches', {id: 1}) }}">Matchs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('fs_main_topplayers') }}">Meilleurs joueurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('fs_main_favorites') }}">Mes favoris</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {#        Page Content#}
         <div class="container">
-            <div id="header" class="jumbotron">
+            {#<div id="header" class="jumbotron">
                 <h1>Footscore</h1>
                 <p>
                     Ce projet est propulsé par Symfony.
                 </p>
-            </div>
+            </div>#}
 
             <div class='row'>
                 <div id="content" class="col-md-9">
@@ -67,7 +67,7 @@
         </div>
 
         {% block javascripts %}
-{#             JS pour bootstrap #}
+            {#             JS pour bootstrap #}
             <script src="{{ asset('bundles/fsmain/js/jquery.min.js') }}"></script>
             <script src="{{ asset('bundles/fsmain/js/bootstrap.bundle.min.js') }}"></script>
         {% endblock %}
