@@ -3,11 +3,12 @@ fs_main_home:
     defaults: { _controller: FSMainBundle:Foot:index }
     
 fs_main_matches:
-    path:      /matches/{id}
+    path:      /matches/{season}/{round}
     defaults:
         _controller: FSMainBundle:Foot:matches
     requirements:
-        id: \d+
+        season: \d+
+        round: \d+
         
 fs_main_standing:
     path:      /standing/{season}

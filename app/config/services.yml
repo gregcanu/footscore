@@ -21,3 +21,4 @@ services:
             - '@csa_guzzle.client.tsdb'
             - '@jms_serializer'
             - %tsdb_api_key%
+            - %tsdb_pl_id%

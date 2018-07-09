@@ -10,6 +10,7 @@
     <h1> {{ "Classement saison 20%s - 20%s"|format(years.0, years.1) }} </h1>
     
     {{ form_start(form) }}
+    {{ form_label(form.season) }}
     {{ form_widget(form.season) }}
     {{ form_end(form) }}
     

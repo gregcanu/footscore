@@ -30,7 +30,7 @@
                             <a class="nav-link" href="{{ path('fs_main_standing', {season: 1718}) }}">Classement</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('fs_main_matches', {id: 1}) }}">Matchs</a>
+                            <a class="nav-link" href="{{ path('fs_main_matches', {season: 1718, round: 38}) }}">Matchs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('fs_main_topplayers') }}">Meilleurs joueurs</a>
@@ -53,7 +53,7 @@
             </div>#}
 
             <div class='row'>
-                <div id="content" class="col-md-9">
+                <div id="content" class="col-md-12">
                     {% block body %}
                     {% endblock %}
                 </div>

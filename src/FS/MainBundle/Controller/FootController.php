@@ -4,6 +4,7 @@ namespace FS\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FS\MainBundle\Form\SeasonType;
+use FS\MainBundle\Form\RoundType;
 use Symfony\Component\HttpFoundation\Request;
 
 class FootController extends Controller {
@@ -12,18 +13,31 @@ class FootController extends Controller {
         return $this->render('FSMainBundle:Foot:index.html.twig');
     }
 
-    public function matchesAction() {
-        return $this->render('FSMainBundle:Foot:matches.html.twig');
+    public function matchesAction($season, $round, Request $request) {
+        $form = $this->createForm(RoundType::class, array('round' => $round));
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $data = $form->getData();
+            return $this->redirectToRoute('fs_main_matches', array('season' => $season, 'round' => $data['round']));
+        }
+        $tsdb = $this->get('app.tsdb');
+        $roundMatches = $tsdb->getMatchesByRound($season, $round);
+
+        return $this->render('FSMainBundle:Foot:matches.html.twig', array(
+                    'roundMatches' => $roundMatches,
+                    'form' => $form->createView(),
+                    'round' => $round,
+        ));
     }
 
     public function standingAction($season, Request $request) {
         $form = $this->createForm(SeasonType::class, array('season' => $season));
-        
+
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $data = $form->getData();
             return $this->redirectToRoute('fs_main_standing', array('season' => $data['season']));
         }
-        
+
         $tsdb = $this->get('app.tsdb');
         $standing = $tsdb->getStanding($season);
 

@@ -5,8 +5,43 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
-Affiche chaque journée de PL avec tous les matchs et les résultats
-<br>
-Select en haut de page pour sélectionner la journée que l'on veut voir
+    <h1> {{ "Matchs de la journée n°%s"|format(round) }} </h1>
+    {{ form_start(form) }}
+    {{ form_label(form.round) }}
+    {{ form_widget(form.round) }}
+    {{ form_end(form) }}
+
+    <table class="borderless matches">
+        {% for events in roundMatches %}
+            {% for key, match in events %}
+                {% if key == 0 %}
+                    <tr class="row-date">
+                        <td colspan="4" class="date"> {{ match.strDate }} </td>
+                    {% elseif match.strDate != events[key-1].strDate %}
+                    <tr class="row-date">
+                        <td colspan="4" class="date"> {{ match.strDate }} </td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td class='time'> {{ match.strTime|date('H\\hi') }} </td> 
+{#                     Ajoute le style gras sur le nom de l'équipe vainqueur et son nombre de but #}
+                   {% if match.intHomeScore > match.intAwayScore %}
+                        <td class='teamHome'> <b> {{ match.strHomeTeam }} </b> </td> 
+                        <td class='score'> <b> {{ match.intHomeScore }} </b> - {{ match.intAwayScore }} </td>
+                        <td class='teamAway'> {{ match.strAwayTeam }} </td>
+                    {% elseif match.intHomeScore < match.intAwayScore %}
+                        <td class='teamHome'>  {{ match.strHomeTeam }}  </td> 
+                        <td class='score'> {{ match.intHomeScore }} - <b> {{ match.intAwayScore }} </b> </td>
+                        <td class='teamAway'> <b> {{ match.strAwayTeam }} </b> </td>
+                    {% else %}
+                        <td class='teamHome'>  {{ match.strHomeTeam }}  </td> 
+                        <td class='score'> {{ match.intHomeScore }} - {{ match.intAwayScore }} </td>
+                        <td class='teamAway'> {{ match.strAwayTeam }} </td>
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
 
 {% endblock %}
