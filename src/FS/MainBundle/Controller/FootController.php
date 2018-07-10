@@ -48,6 +48,19 @@ class FootController extends Controller {
         ));
     }
 
+    public function teamAction($id) {
+        $tsdb = $this->get('app.tsdb');
+        $team = $tsdb->getTeam($id);
+        $players = $tsdb->getPlayersFromTeam($id);
+        
+//        var_dump($players);die();
+        
+        return $this->render('FSMainBundle:Foot:team.html.twig', array(
+                    'team' => $team,
+                    'players' => $players,
+        ));
+    }
+
     public function topplayersAction() {
         return $this->render('FSMainBundle:Foot:topplayers.html.twig');
     }

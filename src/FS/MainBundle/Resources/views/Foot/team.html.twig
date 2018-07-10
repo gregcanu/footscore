@@ -1,0 +1,142 @@
+{# src/FS/MainBundle/Resources/views/Foot/topplayers.html.twig #}
+
+{% extends "FSMainBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block body %}
+    <div id="teamTitle">
+
+        <div class="teamBadge">
+
+            <img src="{{ team.strTeamBadge }}" class="ImgTeamBadge"> 
+        </div>
+        <h1 class="teamName"> {{ team.strTeam }}   </h1>
+    </div>
+    <div id="teamPlayers">
+        <h2>Informations</h2>
+        <div id='teamDetails'>
+            <ul>
+                <li>Fondation : {{ team.intFormedYear }}</li>
+                <li>Entraineur : {{ team.strManager }}</li>
+                <li>Ligue : {{ team.strLeague }}</li>
+                <li>Stade : {{ team.strStadium }}</li>
+            </ul>
+        </div>
+        <h2>Effectif</h2>
+        <div id="goalkeepers" class="players">
+            <div class="playerPosition">
+                Gardiens
+            </div>
+            <table class="tablePlayers">
+                <th></th>
+                <th>Joueur</th>
+                <th>Date de naissance</th>
+                <th>Taille (m)</th>
+                <th>Poids (kg)</th>
+                <th>Date signature</th>
+                <th>Prix transfert</th>
+                <th>Salaire (annuel)</th>
+                    {% for player in players.goalkeeper %}
+                    <tr>
+                        <td style='width: 5%;'>
+                            {% if player.strCutout == "" %}
+                                <img src="{{ asset('bundles/fsmain/img/avatar-player.jpg') }}" class="imgPlayer" title="{{ player.strPlayer }}">
+                            {% else %}
+                                <img src="{{ player.strCutout }}" class="imgPlayer" title="{{ player.strPlayer }}"> 
+                            {% endif %}
+                        </td>
+                        <td style='width: 25%;'>{{ player.strPlayer }}</td>
+                        <td style='width: 10%;'>{{ player.dateBorn|date('d/m/Y') }}</td>
+                        <td style='width: 10%;'>{{ player.strHeight }}</td>
+                        <td style='width: 10%;'>{{ player.strWeight }}</td>
+                        <td style='width: 10%;'>{{ player.dateSigned|date('d/m/Y') }}</td>
+                        <td style='width: 15%;'>{{ player.strSigning }}</td>
+                        <td style='width: 15%;'>{{ player.strWage }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div id="defenders" class="players">
+            <div class="playerPosition">
+                Défenseurs
+            </div>
+            <table class="tablePlayers">
+                {% for player in players.defender %}
+                    <tr>
+                        <td style='width: 5%;'>
+                            {% if player.strCutout == "" %}
+                                <img src="{{ asset('bundles/fsmain/img/avatar-player.jpg') }}" class="imgPlayer" title="{{ player.strPlayer }}">
+                            {% else %}
+                                <img src="{{ player.strCutout }}" class="imgPlayer" title="{{ player.strPlayer }}"> 
+                            {% endif %}
+                        </td>
+                        <td style='width: 25%;'>{{ player.strPlayer }}</td>
+                        <td style='width: 10%;'>{{ player.dateBorn|date('d/m/Y') }}</td>
+                        <td style='width: 10%;'>{{ player.strHeight }}</td>
+                        <td style='width: 10%;'>{{ player.strWeight }}</td>
+                        <td style='width: 10%;'>{{ player.dateSigned|date('d/m/Y') }}</td>
+                        <td style='width: 15%;'>{{ player.strSigning }}</td>
+                        <td style='width: 15%;'>{{ player.strWage }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div id="midfielders" class="players">
+            <div class="playerPosition">
+                Milieux
+            </div>
+            <table class="tablePlayers">
+                {% for player in players.midfielder %}
+                    <tr>
+                        <td style='width: 5%;'>
+                            {% if player.strCutout == "" %}
+                                <img src="{{ asset('bundles/fsmain/img/avatar-player.jpg') }}" class="imgPlayer" title="{{ player.strPlayer }}">
+                            {% else %}
+                                <img src="{{ player.strCutout }}" class="imgPlayer" title="{{ player.strPlayer }}"> 
+                            {% endif %}
+                        </td>
+                        <td style='width: 25%;'>{{ player.strPlayer }}</td>
+                        <td style='width: 10%;'>{{ player.dateBorn|date('d/m/Y') }}</td>
+                        <td style='width: 10%;'>{{ player.strHeight }}</td>
+                        <td style='width: 10%;'>{{ player.strWeight }} </td>
+                        <td style='width: 10%;'>{{ player.dateSigned|date('d/m/Y') }}</td>
+                        <td style='width: 15%;'>{{ player.strSigning }}</td>
+                        <td style='width: 15%;'>{{ player.strWage }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div id="forwards" class="players">
+            <div class="playerPosition">
+                Attaquants
+            </div>
+            <table class="tablePlayers">
+                {% for player in players.forward %}
+                    <tr>
+                        <td style='width: 5%;'>
+                            {% if player.strCutout == "" %}
+                                <img src="{{ asset('bundles/fsmain/img/avatar-player.jpg') }}" class="imgPlayer" title="{{ player.strPlayer }}">
+                            {% else %}
+                                <img src="{{ player.strCutout }}" class="imgPlayer" title="{{ player.strPlayer }}"> 
+                            {% endif %}
+                        </td>
+                        <td style='width: 25%;'>{{ player.strPlayer }}</td>
+                        <td style='width: 10%;'>{{ player.dateBorn|date('d/m/Y') }}</td>
+                        <td style='width: 10%;'>{{ player.strHeight }}</td>
+                        <td style='width: 10%;'>{{ player.strWeight }}</td>
+                        <td style='width: 10%;'>{{ player.dateSigned|date('d/m/Y') }}</td>
+                        <td style='width: 15%;'>{{ player.strSigning }}</td>
+                        <td style='width: 15%;'>{{ player.strWage }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+
+
+{% endblock %}

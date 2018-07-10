@@ -1,0 +1,113 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+footer {
+    text-align: center;
+}
+
+.matches {
+    width: 100%;
+}
+
+.matches td {
+    height: 40px;
+}
+.matches .row-date {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-top: 15px;
+}
+
+.matches .date {
+    width: 100%;
+    text-align: center;
+    color: #ff5a00;
+}
+
+.matches .time {
+    width: 10%;
+    text-align: left;
+}
+
+.matches .teamHome {
+    width: 25%;
+    text-align: right;
+}
+
+.matches .teamAway{
+    width: 35%;
+    text-align: left;
+}
+
+.matches .score {
+    width: 20%;
+    text-align: center;
+}
+
+#teamTitle {
+    display: inline-block;
+    height: 110px;
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+}
+
+.teamBadge {
+    display: inline-block;
+    margin-right: 15%;
+    white-space: nowrap;
+    width: 20%;
+}
+
+.ImgTeamBadge {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+.teamName {
+    display: inline-block;
+    height: 100px;
+    vertical-align: text-top;
+}
+
+.imgPlayer {
+    width: 50px;
+    height: 50px;
+}
+
+.playerPosition {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+
+.players {
+    width: 100%;
+}

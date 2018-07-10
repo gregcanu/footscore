@@ -6,14 +6,14 @@
 
 {% block body %}
     {% set years = ( season|split('', 2) ) %}
-    
+
     <h1> {{ "Classement saison 20%s - 20%s"|format(years.0, years.1) }} </h1>
-    
+
     {{ form_start(form) }}
     {{ form_label(form.season) }}
     {{ form_widget(form.season) }}
     {{ form_end(form) }}
-    
+
     <table class="table">
         <tr>
             <th>#</th>
@@ -31,7 +31,9 @@
             {% for key, team in teams %}
                 <tr>
                     <td> {{ key+1 }} </td> 
-                    <td> {{ team.name}} </td> 
+                    <td> <a href="{{ path('fs_main_team', {'id': team.teamid}) }}">
+                            {{ team.name}}
+                        </a> </td> 
                     <td> {{ team.played}} </td> 
                     <td> {{ team.win}} </td> 
                     <td> {{ team.draw}} </td> 

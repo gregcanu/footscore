@@ -14,6 +14,12 @@ fs_main_standing:
     path:      /standing/{season}
     defaults: { _controller: FSMainBundle:Foot:standing }
     requirements:
+        season: \d+
+        
+fs_main_team:
+    path:      /team/{id}
+    defaults: { _controller: FSMainBundle:Foot:team }
+    requirements:
         id: \d+
     
 fs_main_topplayers:
