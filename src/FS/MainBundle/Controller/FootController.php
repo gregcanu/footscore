@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FS\MainBundle\Form\SeasonType;
 use FS\MainBundle\Form\RoundType;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class FootController extends Controller {
 
@@ -52,9 +53,9 @@ class FootController extends Controller {
         $tsdb = $this->get('app.tsdb');
         $team = $tsdb->getTeam($id);
         $players = $tsdb->getPlayersFromTeam($id);
-        
+
 //        var_dump($players);die();
-        
+
         return $this->render('FSMainBundle:Foot:team.html.twig', array(
                     'team' => $team,
                     'players' => $players,
@@ -65,6 +66,9 @@ class FootController extends Controller {
         return $this->render('FSMainBundle:Foot:topplayers.html.twig');
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')")
+     */
     public function favoritesAction() {
         return $this->render('FSMainBundle:Foot:favorites.html.twig');
     }
